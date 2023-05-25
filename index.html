@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <title>Phaser Breakout</title>
+    <style>
+    
+      body {
+        overflow: hidden;
+        font-size: 2em;
+      }
+
+      #container {
+        display: grid;
+        grid-template-columns: 1fr 4fr 1fr;
+      }
+
+      #scoreDiv {
+        border: none;
+        display: flex;
+        align-content: center;
+        align-items: center;
+        justify-content: center;
+      }
+
+      #livesDiv {
+        border: none;
+        display: flex;
+        align-content: center;
+        align-items: center;
+        justify-content: center;
+      }
+    </style>
+    <script src="js/phaser.js"></script>
+    <script src="js/ball-and-paddle.js"></script>
+    <script src="js/config-and-startEnd.js"></script>
+</head>
+<body id="body">
+  <div id="container">
+    <div id="scoreDiv">
+    </div>
+    <script>
+    
+      const game = new Phaser.Game(480, 700, Phaser.CANVAS, null,
+      {
+        preload,
+        create,
+        update,
+      });
+
+      let ball;
+      let paddle;
+      let bricks;
+      let newBrick;
+      let brickInfo;
+      //let scoreText;
+      let score = 0;
+      let lives = 3;
+      //let livesText;
+      let lifeLostText;
+      let playing = false;
+      let startButton;
+
+    let gameContainer = document.getElementById('container');
+    let livesDiv = document.createElement('div');
+    let scoreDiv = document.getElementById('scoreDiv');
+
+    livesDiv.setAttribute('id', 'livesDiv');
+    livesDiv.insertAdjacentHTML('afterbegin', 'this is some sample text');
+
+    addEventListener('DOMContentLoaded', (event) => {
+      let justTheCanvas = document.getElementsByTagName('canvas');
+      gameContainer.append(justTheCanvas.item(0));
+      gameContainer.append(livesDiv);
+      scoreDiv.innerHTML = `Points: ${score}`;
+      livesDiv.innerHTML = `Lives: ${lives}`;
+    });
+    </script>
+  </div>
+</body>
+</html>
